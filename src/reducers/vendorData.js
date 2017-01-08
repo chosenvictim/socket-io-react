@@ -1,4 +1,3 @@
-import actionTypes from '../actions/actionTypes';
 const initialState = {
     data: []
 };

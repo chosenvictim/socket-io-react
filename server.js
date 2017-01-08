@@ -4,7 +4,7 @@ var SocketIO = require("socket.io");
 
 let app = express();
 let server = http.Server(app);
-let io = new SocketIO(server, {origins: "http://localhost:8080"});
+let io = new SocketIO(server, {origins: "http://localhost:*"});
 let port = process.env.PORT || 3000;
 
 app.use(express['static'](__dirname + '/dist'));
