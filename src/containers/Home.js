@@ -31,12 +31,14 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Socket.io React Client</h2>
-                <div className="data-list">
-                {
-                    this.props.vendorData.data.map((item, idx) => <InventoryItem item={item} idx={idx} /> )
-                }
+            <div className="main-container">
+                <h2 style={{textAlign:"center"}}>Stationary Inventory List</h2>
+                <ul className="data-list horizontal-flex fs">
+                { this.props.vendorData.data.map((item, idx) => <InventoryItem item={item} idx={idx} />) }
+                </ul>
+                <div className="signature">
+                    <p>Made by:- Shek</p>
+                    <p>Check my <a href="https://github.com/shek8034">Github</a></p>
                 </div>
             </div>
         );

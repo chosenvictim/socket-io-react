@@ -1,11 +1,19 @@
 import React from 'react';
 
+const variantItem = (variant, idx) => (
+    <li key={idx} className="horizontal-flex sb">
+        <p>{variant.vendor}</p>
+        <p>{variant.price}</p>
+    </li>
+);
+
 export default function InventoryItem(props) {
     return (
-        <ul key={props.idx} className="item-details">
-            <li>"Item" :- {props.item.name}</li>
-            <li>"Vendor" :- {props.item.vendor}</li>
-            <li>"Price" :- {props.item.price}</li>
-        </ul>
+        <li key={props.idx} className="item-details">
+            <p className="item-title">{props.item.name}</p>
+            <ul className="variants-list vertical-flex">
+                { props.item.variants.map((variant, idx) => variantItem(variant, idx)) }
+            </ul>
+        </li>
     )
 }
