@@ -9,11 +9,17 @@ let port = process.env.PORT || 3000;
 
 app.use(express['static'](__dirname + '/dist'));
 
+/*
+    Dummy random data
+    Ideally there should be a seperate mapping for Pen, Notebook, Rubber, etc with their vendors.
+    As of now I am using random combination of Item type and Vendor list.
+*/
 let dataMap = {
     nameList: ["Pen", "Notebook", "Rubber"],
     vendorList: ["Link", "Reynolds", "Classmate", "Luxor", "Apsara", "Mr. Clean", "Tiger"],
     priceList: [10, 20, 30, 40, 50]
 };
+
 let randomData = {};
 
 function generateRandomData() {
@@ -30,17 +36,22 @@ function generateRandomData() {
 
 io.on('connection', function(client) {
     console.log("New connection");
+    // After every five seconds, send random object to client
     setInterval(function() {
         generateRandomData();
         console.log("Sending data to client: ", randomData);
         client.broadcast.emit('newData', randomData);
     }, 5000);
-    client.on('event', function(data){});
-    client.on('disconnect', function(){});
+
+    client.on('disconnect', function(err){
+        console.log("Disconnected !! ", err);
+    });
+
     client.on('error', function(err) {
-        console.log(err);
+        console.log("Error in connection !! ", err);
     });
 });
+
 
 server.listen(port, () => {
     console.log('[INFO] Server Listening on http://localhost:' + port);
