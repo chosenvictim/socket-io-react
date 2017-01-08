@@ -1,5 +1,6 @@
 # socket-io-react
 Socket.io Real time application in React
+This is a basic React app which is using socket.io to get real time updates from NodeJs server and rendering data.
 
 **Instructions**
 
@@ -7,19 +8,16 @@ Socket.io Real time application in React
 
 2. Run ```npm install```
 
-3. For development version, follow these steps:-
-
-  a) ```npm run dev``` to start webpack dev server.
-  
-  b) Hit ```http://localhost:8080``` and you app is served by webpack dev server. It uses hot reloading, so any chagne you make in your code with be built automatically and reflected in the browser.
-
-4. For production build, follow these steps:-
+3. Follow these steps:-
 
   a) ```npm run build``` to create a dist directory with production build. It has app.js, app.css and vendor.js code separated.
   
-  b) ```node server.js``` to run local node web server and hit ```http://localhost:3000```
+  b) ```node server.js``` to run local node web server.
   
-  c) For deployment, publish dist directory
+  c) Socket.io server is running along with web server and sending random objects to the clients via websocket.
+  
+  d) In the browser, hit ```http://localhost:3000``` and you will be seeing Simple React UI to render a list which is coming via websocket.
+
 
 **LICENSE**
 
